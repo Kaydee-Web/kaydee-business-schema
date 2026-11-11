@@ -18,7 +18,7 @@ Requires WordPress 6.0+, PHP 7.4+. Abilities need WordPress 6.9+.
 ## Install
 Download `kaydee-business-schema.zip` from the latest GitHub Release and install it (Plugins → Add New → Upload), or with WP-CLI:
 
-    wp plugin install https://github.com/<org>/kaydee-business-schema/releases/latest/download/kaydee-business-schema.zip --activate
+    wp plugin install https://github.com/Kaydee-Web/kaydee-business-schema/releases/latest/download/kaydee-business-schema.zip --activate
 
 Pin a specific tag in automation: `…/releases/download/v0.1.0/kaydee-business-schema.zip`.
 
@@ -40,7 +40,7 @@ The result lists any values that were dropped as invalid (`notes`) and a `previe
 ## Updates from GitHub (optional)
 Bundle [plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker) at `vendor/plugin-update-checker/` and set, e.g. in `wp-config.php`:
 
-    define( 'KBS_UPDATE_REPO', 'https://github.com/<org>/kaydee-business-schema/' );
+    define( 'KBS_UPDATE_REPO', 'https://github.com/Kaydee-Web/kaydee-business-schema/' );
 
 Private repo: also add the checker's `setAuthentication()` token in a small mu-plugin; do not commit tokens.
 
@@ -53,3 +53,6 @@ Private repo: also add the checker's `setAuthentication()` token in a small mu-p
 
 ## Notes
 Business facts live in one option, `kbs_details`. Uninstalling the plugin deletes it.
+
+## Licence
+GPL-3.0-or-later. Copyright (c) Kaydee. See LICENSE.
