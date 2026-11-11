@@ -37,16 +37,17 @@ Ability `kaydee-business-schema/set-details` takes only the keys to change. Hour
 
 The result lists any values that were dropped as invalid (`notes`) and a `preview` of the output.
 
-## Updates from GitHub (optional)
-Bundle [plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker) at `vendor/plugin-update-checker/` and set, e.g. in `wp-config.php`:
+## Updates from GitHub
+The plugin checks this repo's GitHub Releases (via the bundled [plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker), MIT) and shows new versions on the normal Plugins/Updates screens. Sites update from the release asset `kaydee-business-schema.zip`. WordPress checks about every 12 hours; use "Check for updates" on the Plugins page to force it.
 
-    define( 'KBS_UPDATE_REPO', 'https://github.com/Kaydee-Web/kaydee-business-schema/' );
-
-Private repo: also add the checker's `setAuthentication()` token in a small mu-plugin; do not commit tokens.
+- Auto-updates for one site: `wp plugin auto-updates enable kaydee-business-schema`, or the toggle in wp-admin. Consider updating in batches rather than all at once.
+- Point a site at a fork, or switch checks off: use the `kbs_update_repo` filter (return an empty string to disable), or define `KBS_UPDATE_REPO`.
+- Private repo: add the checker's `setAuthentication()` token in a small mu-plugin; do not commit tokens.
+- Sites on 0.1.0 have no updater: upload 0.2.0 manually once, and updates are automatic after that.
 
 ## Releasing
-1. Bump `Version:` in `kaydee-business-schema.php` and `KBS_VERSION`.
-2. `git tag v0.1.1 && git push --tags`. The workflow checks the tag matches the plugin version and attaches `kaydee-business-schema.zip` (root folder `kaydee-business-schema/`).
+1. Bump `Version:` in `kaydee-business-schema.php` and `KBS_VERSION` (the workflow fails if the tag doesn't match the header).
+2. Publish a GitHub Release with tag `vX.Y.Z` (or `git tag vX.Y.Z && git push --tags`). The workflow checks the tag matches the plugin version and attaches `kaydee-business-schema.zip` (root folder `kaydee-business-schema/`).
 
 ## Filters
 `kbs_types` (business type map), `kbs_update_repo`.
@@ -56,3 +57,6 @@ Business facts live in one option, `kbs_details`. Uninstalling the plugin delete
 
 ## Licence
 GPL-3.0-or-later. Copyright (c) Kaydee. See LICENSE.
+
+## Third-party code
+`vendor/plugin-update-checker/` is [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 6.0 by Janis Elsts, MIT licensed (see `vendor/plugin-update-checker/license.txt`).
