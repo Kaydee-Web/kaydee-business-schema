@@ -1,0 +1,24 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tag matches plugin version
+        run: |
+          v=$(grep -m1 -E '^\s*\*\s*Version:' kaydee-business-schema.php | sed -E 's/.*Version:\s*//' | tr -d '[:space:]')
+          [ "v$v" = "${GITHUB_REF_NAME}" ] || { echo "Tag ${GITHUB_REF_NAME} != plugin version v$v"; exit 1; }
+      - name: Build zip (root folder = kaydee-business-schema)
+        run: |
+          mkdir -p /tmp/build/kaydee-business-schema
+          rsync -a --exclude='.git*' --exclude='.github' --exclude='*.zip' ./ /tmp/build/kaydee-business-schema/
+          (cd /tmp/build && zip -r "$GITHUB_WORKSPACE/kaydee-business-schema.zip" kaydee-business-schema)
+      - name: Publish release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: kaydee-business-schema.zip

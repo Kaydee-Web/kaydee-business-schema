@@ -6,7 +6,7 @@
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Kaydee
- * License:           GPL-2.0-or-later
+ * License:           GPL-3.0-or-later
  * Text Domain:       kaydee-business-schema
  */
 
