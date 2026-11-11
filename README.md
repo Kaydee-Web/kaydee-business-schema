@@ -35,6 +35,8 @@ Ability `kaydee-business-schema/set-details` takes only the keys to change. Hour
       "people": [{ "name": "Jane Smith", "job_title": "Owner", "page_slug": "about-us", "founder": true }]
     }
 
+Over plain REST (any client with an application password): `POST /wp-json/wp-abilities/v1/abilities/kaydee-business-schema/set-details/run` with body `{"input": { ... }}`; `GET …/preview/run` and `GET …/get-details/run` for reads.
+
 The result lists any values that were dropped as invalid (`notes`) and a `preview` of the output.
 
 ## Updates from GitHub
