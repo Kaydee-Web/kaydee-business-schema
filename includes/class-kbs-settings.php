@@ -65,8 +65,10 @@ class Kbs_Settings {
 	public static function sanitize_option( $input ) {
 		$notes = array();
 		$clean = self::sanitize( is_array( $input ) ? $input : array(), $notes );
-		foreach ( $notes as $note ) {
-			add_settings_error( 'kbs_details', 'kbs_note', $note, 'warning' );
+		if ( function_exists( 'add_settings_error' ) ) { // wp-admin only; absent on REST/CLI requests
+			foreach ( $notes as $note ) {
+				add_settings_error( 'kbs_details', 'kbs_note', $note, 'warning' );
+			}
 		}
 		return $clean;
 	}

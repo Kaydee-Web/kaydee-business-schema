@@ -10,7 +10,7 @@ class Kbs_Admin {
 	const SLUG  = 'kbs-business-details';
 
 	public static function init() {
-		add_action( 'admin_init', array( __CLASS__, 'register' ) );
+		add_action( 'init', array( __CLASS__, 'register' ) ); // not admin_init: REST and WP-CLI writes must hit the sanitiser too
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( KBS_FILE ), array( __CLASS__, 'links' ) );
 	}

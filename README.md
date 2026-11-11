@@ -35,6 +35,8 @@ Ability `kaydee-business-schema/set-details` takes only the keys to change. Hour
       "people": [{ "name": "Jane Smith", "job_title": "Owner", "page_slug": "about-us", "founder": true }]
     }
 
+Over plain REST (any client with an application password): `POST /wp-json/wp-abilities/v1/abilities/kaydee-business-schema/set-details/run` with body `{"input": { ... }}`; `GET …/preview/run` and `GET …/get-details/run` for reads.
+
 The result lists any values that were dropped as invalid (`notes`) and a `preview` of the output.
 
 ## Updates from GitHub
@@ -43,7 +45,7 @@ The plugin checks this repo's GitHub Releases (via the bundled [plugin-update-ch
 - Auto-updates for one site: `wp plugin auto-updates enable kaydee-business-schema`, or the toggle in wp-admin. Consider updating in batches rather than all at once.
 - Point a site at a fork, or switch checks off: use the `kbs_update_repo` filter (return an empty string to disable), or define `KBS_UPDATE_REPO`.
 - Private repo: add the checker's `setAuthentication()` token in a small mu-plugin; do not commit tokens.
-- Sites on 0.1.0 have no updater: upload 0.2.0 manually once, and updates are automatic after that.
+- Sites on 0.1.0 have no updater: upload 0.2.0 or later manually once, and updates are automatic after that.
 
 ## Releasing
 1. Bump `Version:` in `kaydee-business-schema.php` and `KBS_VERSION` (the workflow fails if the tag doesn't match the header).
