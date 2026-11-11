@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Kaydee Business Schema
  * Description:       One place for business details. Outputs LocalBusiness structured data (extending Yoast, Rank Math or AIOSEO), provides shortcodes for the visible site, and exposes a WordPress Ability so details can be set programmatically.
- * Version:           0.2.0
+ * Version:           0.2.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Kaydee
@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'KBS_VERSION', '0.2.0' );
+define( 'KBS_VERSION', '0.2.1' );
 define( 'KBS_FILE', __FILE__ );
 define( 'KBS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'KBS_OPTION', 'kbs_details' );
